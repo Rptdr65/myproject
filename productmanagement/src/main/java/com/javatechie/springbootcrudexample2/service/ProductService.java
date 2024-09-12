@@ -2,15 +2,17 @@ package com.javatechie.springbootcrudexample2.service;
 
 import com.javatechie.springbootcrudexample2.entity.Product;
 import com.javatechie.springbootcrudexample2.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Data;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.theme.CookieThemeResolver;
+
 
 import java.util.List;
+@Data
 
 @Service
 public class ProductService {
-    @Autowired
+
     private ProductRepository repository;
 
     public Product saveProduct(Product product){
@@ -36,6 +38,7 @@ public class ProductService {
     }
     public Product updateProduct(Product product){
         Product existingProduct=repository.findById(product.getId()).orElse(null);
+        assert existingProduct != null;
         existingProduct.setName(product.getName());
         existingProduct.setQuantity(product.getQuantity());
         existingProduct.setPrice(product.getPrice());

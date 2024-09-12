@@ -2,15 +2,20 @@ package com.javatechie.springbootcrudexample2.controller;
 
 import com.javatechie.springbootcrudexample2.entity.Product;
 import com.javatechie.springbootcrudexample2.service.ProductService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @RestController
 public class ProductController {
 
-    @Autowired
+
     private ProductService service;
 
     @PostMapping("/addProduct")
